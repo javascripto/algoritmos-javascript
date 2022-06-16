@@ -12,10 +12,10 @@ export function selectionSort<T>(list: T[]): T[] {
   return list;
 }
 
-if (require.main === module) {
-  (async () => {
-    const { books } = await import('../data-sources/book-list');
-    const bookPrices = books.map((book) => book.price);
-    console.log(selectionSort(bookPrices));
-  })();
+async function main() {
+  const { books } = await import('../data-sources/book-list');
+  const bookPrices = books.map((book) => book.price);
+  console.log(selectionSort(bookPrices));
 }
+
+if (require.main === module) main();
