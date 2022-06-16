@@ -3,9 +3,7 @@ export interface Book {
   price: number;
 }
 
-export const name = 'books';
-
-const books: Book[] = [
+export const books: Book[] = [
   {
     title: 'JavaScript',
     price: 25,
@@ -31,5 +29,3 @@ const books: Book[] = [
     price: 20,
   },
 ];
-
-export default books;
