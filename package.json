@@ -1,0 +1,8 @@
+{
+  "name": "algoritmos-javascript",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:javascripto/algoritmos-javascript.git",
+  "author": "Yuri Almeida <yurialves2@gmail.com>",
+  "license": "MIT"
+}
