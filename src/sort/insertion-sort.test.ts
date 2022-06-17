@@ -1,5 +1,4 @@
 import { insertionSort } from './insertion-sort';
-import { books } from '../data-sources/book-list';
 import { swapItemsPosition } from '../utils/swap-items-position';
 
 jest.mock('../utils/swap-items-position', () => ({
