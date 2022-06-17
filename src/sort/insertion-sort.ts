@@ -9,13 +9,13 @@ import { swapItemsPosition } from '../utils/swap-items-position';
  * position).
  */
 export function insertionSort<T>(list: T[]): T[] {
-  for (let currentIndex = 1; currentIndex < list.length; currentIndex++) {
+  for (let currentIndex = 0; currentIndex < list.length - 1; currentIndex++) {
     let analyzedItemIndex = currentIndex;
-    let previousItemIndex = analyzedItemIndex - 1;
-    while (list[analyzedItemIndex] < list[previousItemIndex]) {
-      swapItemsPosition(list, analyzedItemIndex, previousItemIndex);
+    let nextItemIndex = analyzedItemIndex + 1;
+    while (list[analyzedItemIndex] > list[nextItemIndex]) {
+      swapItemsPosition(list, analyzedItemIndex, nextItemIndex);
       analyzedItemIndex--;
-      previousItemIndex--;
+      nextItemIndex--;
     }
   }
   return list;
