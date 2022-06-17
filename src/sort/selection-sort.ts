@@ -1,4 +1,4 @@
-import { lowerNumber } from '../utils/lower-number';
+import { getLowerItemIndex } from '../utils/get-lower-item-index';
 import { swapItemsPosition } from '../utils/swap-items-position';
 
 /**
@@ -9,8 +9,8 @@ import { swapItemsPosition } from '../utils/swap-items-position';
  */
 export function selectionSort<T>(list: T[]): T[] {
   for (let currentIndex = 0; currentIndex < list.length; currentIndex++) {
-    const cheaperBookIndex = lowerNumber(list, currentIndex);
-    swapItemsPosition(list, currentIndex, cheaperBookIndex);
+    const lowerItemIndex = getLowerItemIndex(list, currentIndex);
+    swapItemsPosition(list, currentIndex, lowerItemIndex);
   }
   return list;
 }
