@@ -1,5 +1,5 @@
-import { getLowerItemIndex } from '../utils/get-lower-item-index';
-import { swapItemsPosition } from '../utils/swap-items-position';
+import { getLowerItemIndex } from '../../utils/get-lower-item-index';
+import { swapItemsPosition } from '../../utils/swap-items-position';
 
 /**
  *
@@ -16,7 +16,7 @@ export function selectionSort<T>(list: T[]): T[] {
 }
 /* istanbul ignore next */
 async function main() {
-  const { books } = await import('../data-sources/book-list');
+  const { books } = await import('./books');
   const bookPrices = books.map((book) => book.price);
   console.log(selectionSort(bookPrices));
 }

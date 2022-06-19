@@ -1,9 +1,4 @@
-export interface Book {
-  title: string;
-  price: number;
-}
-
-export const books: Book[] = [
+export const books = [
   {
     title: 'JavaScript',
     price: 25,
