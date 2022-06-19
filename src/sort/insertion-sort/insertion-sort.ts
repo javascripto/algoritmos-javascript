@@ -13,7 +13,7 @@ export function insertionSort<T>(list: T[]): T[] {
     let analyzedItemIndex = currentIndex;
     let nextItemIndex = analyzedItemIndex + 1;
     while (list[analyzedItemIndex] > list[nextItemIndex]) {
-      swapItemsPosition(list, analyzedItemIndex, nextItemIndex);
+      list.$swap(analyzedItemIndex, nextItemIndex);
       analyzedItemIndex--;
       nextItemIndex--;
     }

@@ -1,13 +1,9 @@
 import { insertionSort } from './insertion-sort';
-import { swapItemsPosition } from '../../utils/swap-items-position';
-
-jest.mock('../../utils/swap-items-position', () => ({
-  swapItemsPosition: jest.fn(
-    jest.requireActual('../../utils/swap-items-position').swapItemsPosition
-  ),
-}));
+import '../../utils/swap-items-position';
 
 describe('insertionSort', () => {
+  const $swap = (Array.prototype.$swap = jest.fn(Array.prototype.$swap));
+
   it.each`
     list                        | expectedSortedList
     ${[1, 2, 3]}                | ${[1, 2, 3]}
@@ -26,11 +22,11 @@ describe('insertionSort', () => {
     ${[8, 2, 5, 6, 3]} | ${6}
   `('should swap items $expectedSwaps times', ({ list, expectedSwaps }) => {
     insertionSort(list);
-    expect(swapItemsPosition).toBeCalledTimes(expectedSwaps);
+    expect($swap).toBeCalledTimes(expectedSwaps);
   });
 
   it('should not swap items on sort array', () => {
     insertionSort([1, 2, 3]);
-    expect(swapItemsPosition).not.toHaveBeenCalled();
+    expect($swap).not.toHaveBeenCalled();
   });
 });
