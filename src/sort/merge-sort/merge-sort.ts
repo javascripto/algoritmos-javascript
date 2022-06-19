@@ -2,8 +2,8 @@ import {
   ComparatorFn,
   simpleComparator,
   createComparatorFn,
-} from '../utils/comparator';
-import { joinSortedLists } from '../utils/join-sorted-lists';
+} from '../../utils/comparator';
+import { joinSortedLists } from '../../utils/join-sorted-lists';
 
 export function mergeSort<T>(
   list: T[],
@@ -22,12 +22,13 @@ export function mergeSort<T>(
   );
 }
 
+/* istanbul ignore next */
 declare global {
   interface Array<T> {
     Sort(comparator?: ComparatorFn<T>): T[];
   }
 }
-
+/* istanbul ignore next */
 if (require.main === module) {
   const list = [8, 3, 5, 2, 0, 9];
   console.log(list, '<- list');
