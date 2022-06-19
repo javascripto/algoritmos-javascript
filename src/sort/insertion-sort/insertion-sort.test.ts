@@ -1,5 +1,5 @@
 import { insertionSort } from './insertion-sort';
-import { swapItemsPosition } from '../utils/swap-items-position';
+import { swapItemsPosition } from '../../utils/swap-items-position';
 
 jest.mock('../utils/swap-items-position', () => ({
   swapItemsPosition: jest.fn(

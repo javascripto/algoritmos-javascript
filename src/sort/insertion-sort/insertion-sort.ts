@@ -1,4 +1,4 @@
-import { swapItemsPosition } from '../utils/swap-items-position';
+import { swapItemsPosition } from '../../utils/swap-items-position';
 
 /**
  *
@@ -23,7 +23,7 @@ export function insertionSort<T>(list: T[]): T[] {
 
 /* istanbul ignore next */
 async function main() {
-  const { books } = await import('../data-sources/book-list');
+  const { books } = await import('./books');
   console.log(insertionSort(books.map((book) => book.price)));
   console.log(insertionSort(books.map((book) => book.title)));
 }
