@@ -1,4 +1,4 @@
-import { swapItemsPosition } from '../../utils/swap-items-position';
+import '../../utils/swap-items-position';
 
 /**
  *
