@@ -1,4 +1,9 @@
 import '../../utils/swap-items-position';
+import {
+  ComparatorFn,
+  simpleComparator,
+  createComparatorFn,
+} from '../../utils/comparator';
 
 /**
  *
@@ -8,14 +13,17 @@ import '../../utils/swap-items-position';
  * the element at that position (INSERTING the element on the correct
  * position).
  */
-export function insertionSort<T>(list: T[]): T[] {
+export function insertionSort<T>(
+  list: T[],
+  comparatorFn: ComparatorFn = simpleComparator
+): T[] {
   for (let currentIndex = 0; currentIndex < list.length - 1; currentIndex++) {
-    let analyzedItemIndex = currentIndex;
-    let nextItemIndex = analyzedItemIndex + 1;
-    while (list[analyzedItemIndex] > list[nextItemIndex]) {
-      list.$swap(analyzedItemIndex, nextItemIndex);
-      analyzedItemIndex--;
-      nextItemIndex--;
+    let left = currentIndex;
+    let right = currentIndex + 1;
+    while (comparatorFn(list[right], list[left]) < 0) {
+      list.$swap(left, right);
+      left--;
+      right--;
     }
   }
   return list;
@@ -24,8 +32,19 @@ export function insertionSort<T>(list: T[]): T[] {
 /* istanbul ignore next */
 async function main() {
   const { books } = await import('./books');
-  console.log(insertionSort(books.map((book) => book.price)));
-  console.log(insertionSort(books.map((book) => book.title)));
+  console.log(
+    insertionSort(
+      books,
+      createComparatorFn((book) => book?.price)
+    )
+  );
+
+  console.log(
+    insertionSort(
+      books,
+      createComparatorFn((book) => book?.title)
+    )
+  );
 }
 /* istanbul ignore next */
 if (require.main === module) main();
