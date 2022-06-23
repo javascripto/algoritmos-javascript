@@ -16,7 +16,11 @@ export function createComparatorFn<T>(
     let resultA = multipleResult(keyExtractorFn(a));
     let resultB = multipleResult(keyExtractorFn(b));
     let index = 0;
-    while (resultA[index] !== undefined && resultA[index] === resultB[index]) {
+    while (
+      resultA[index] !== undefined &&
+      resultA[index] === resultB[index] &&
+      index < resultA.length - 1
+    ) {
       index++;
     }
     if (resultA[index] < resultB[index]) {
