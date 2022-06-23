@@ -6,7 +6,7 @@ interface SortByFn<T> {
   (item: T): [any, Sort | 'asc' | 'desc'][];
 }
 
-enum Sort {
+export enum Sort {
   ASC = 'asc',
   DESC = 'desc',
 }
@@ -22,8 +22,7 @@ export function sortBy<T>(sortByFn: SortByFn<T>): ComparatorFn<T> {
     ) {
       compareIndex++;
     }
-    const order =
-      compareArrayA[compareIndex][1] || compareArrayB[compareIndex][1];
+    const order = compareArrayA[compareIndex][1];
     if (compareArrayA[compareIndex][0] < compareArrayB[compareIndex][0]) {
       return order === Sort.ASC ? -1 : 1;
     }
@@ -34,6 +33,7 @@ export function sortBy<T>(sortByFn: SortByFn<T>): ComparatorFn<T> {
   };
 }
 
+/* istanbul ignore next */
 if (require.main === module) {
   console.log(
     [
