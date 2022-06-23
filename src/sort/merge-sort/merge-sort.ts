@@ -9,17 +9,11 @@ export function mergeSort<T>(
   list: T[],
   comparatorFn: ComparatorFn<T> = simpleComparator
 ): T[] {
-  if (list.length <= 1) {
-    return list;
-  }
+  if (list.length < 2) return list;
   const middle = Math.floor(list.length / 2);
-  const left = list.slice(0, middle);
-  const right = list.slice(middle);
-  return joinSortedLists(
-    mergeSort(left, comparatorFn),
-    mergeSort(right, comparatorFn),
-    comparatorFn
-  );
+  const left = mergeSort(list.slice(0, middle), comparatorFn);
+  const right = mergeSort(list.slice(middle), comparatorFn);
+  return joinSortedLists(left, right, comparatorFn);
 }
 
 /* istanbul ignore next */
@@ -54,7 +48,6 @@ if (require.main === module) {
     ),
     '<- sorted ages'
   );
-  console.clear();
 
   Array.prototype.Sort = function (comparator = simpleComparator) {
     return mergeSort(this, comparator);
