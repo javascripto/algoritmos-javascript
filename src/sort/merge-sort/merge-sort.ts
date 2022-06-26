@@ -5,6 +5,14 @@ import {
 } from '../../utils/comparator';
 import { joinSortedLists } from '../../utils/join-sorted-lists';
 
+/**
+ *
+ * @description: merge sort is a sort algorithm that divides the input list
+ * into two halves recursively until the list is of size 1. Then, it returns
+ * the two halves joined together with a helper function that merges two
+ * sorted lists.
+ * The merge sort algorithm is a divide and conquer algorithm.
+ */
 export function mergeSort<T>(
   list: T[],
   comparatorFn: ComparatorFn<T> = simpleComparator
